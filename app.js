@@ -1,86 +1,40 @@
-// // write a function which takes in a string and returns counts of each charachter in the string!
-function charCount(str) {
-  let obj = {};
-  for (let char of str) {
-    char = char.toLowerCase();
-    if (isAlphaNumeric(char)) {
-      obj[char] = ++obj[char] || 1;
-    }
-  }
-  return obj;
-}
+//wrie a function called same, which accepts two arrays. the function should return true if every value in the array has its corresponding value squared in the second array.
 
-function isAlphaNumeric(char) {
-  let code = char.charCodeAt(0);
-  if (
-    !(code > 47 && code < 58) && // numeric (0-9)
-    !(code > 64 && code < 91) && // upper alpha (A-Z)
-    !(code > 96 && code < 123) // lower alpha (a-z)
-  ) {
+function same(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
     return false;
+  }
+  let frequencyCounter1 = {};
+  let frequencyCounter2 = {};
+
+  for (let val of arr1) {
+    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+  }
+  for (let val of arr2) {
+    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+  }
+  for (let key in frequencyCounter1) {
+    if (!(key ** 2 in frequencyCounter2)) {
+      return false;
+    }
+    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+      return false;
+    }
   }
   return true;
 }
 
-// function charCount(str) {
-//   let obj = {};
-//   for (let char of str) {
-//     char = char.toLowerCase();
-//     if (/[a-z0-9]/.test(char)) {
-//       obj[char] = ++obj[char] || 1;
-//     }
+// function same(arr1, arr2) {
+//   if (arr1.length !== arr2.length) {
+//     return false;
 //   }
-//   return obj;
-// }
-
-// function charCount(str) {
-//   let obj = {};
-//   for (let char of str) {
-//     char = char.toLowerCase();
-//     if (/[a-z0-9]/.test(char)) {
-//       if (obj[char] > 0) {
-//         obj[char]++;
-//       } else {
-//         obj[char] = 1;
-//       }
+//   for (element of arr1) {
+//     let correctIndex = arr2.indexOf(element ** 2);
+//     if (correctIndex === -1) {
+//       return false;
 //     }
+//     arr2.splice(correctIndex, 1);
 //   }
-//   return obj;
+//   return true;
 // }
-
-// function charCount(str) {
-//   let obj = {};
-//   for (let i = 0; i < str.length; i++) {
-//     let char = str[i].toLowerCase();
-//     if (/[a-z0-9]/.test(char)) {
-//       if (obj[char] > 0) {
-//         obj[char]++;
-//       } else {
-//         obj[char] = 1;
-//       }
-//     }
-//   }
-//   return obj;
-// }
-
-// function charCount(str) {
-//   // make object to return at the end
-//   let result = {};
-//   //loop over string, for each character ...
-//   for (let i = 0; i < str.length; i++) {
-//     let char = str[i].toLowerCase();
-//     //.....if the char is a number/letter AND is a key in object, add one to count
-//     if (result[char] > 0) {
-//       result[char]++;
-//     }
-//     //.....if the char is a number/letter AND not in object, add it to the object and set value to 1
-//     else {
-//       result[char] = 1;
-//     }
-//   }
-
-//   //.....if charachter is something else (space, period...) don't do anything
-//   // return object at the end
-//   return result;
-// }
-console.log(charCount("amawww"));
+console.log(same([1, 2, 3], [1, 4, 9]));
