@@ -1,40 +1,26 @@
-//wrie a function called same, which accepts two arrays. the function should return true if every value in the array has its corresponding value squared in the second array.
+// ANAGRAMS: given two strings, write a function to determine if the second string is an anagram of the first. an anagram is a word , phrase formed by rearranging the letters o another: cinema: iceman
 
-function same(arr1, arr2) {
-  if (arr1.length !== arr2.length) {
+function validAnagram(first, second) {
+  if (first.length !== second.length) {
     return false;
   }
-  let frequencyCounter1 = {};
-  let frequencyCounter2 = {};
 
-  for (let val of arr1) {
-    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+  const lookup = {};
+
+  for (let letter of first) {
+    // if letter exists, increment otherwise set to 1
+    lookup[letter] ? (lookup[letter] += 1) : (lookup[letter] = 1);
   }
-  for (let val of arr2) {
-    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
-  }
-  for (let key in frequencyCounter1) {
-    if (!(key ** 2 in frequencyCounter2)) {
+
+  for (let letter of second) {
+    // can't find letter or letter is zero then its not an anagram
+    if (!lookup[letter]) {
       return false;
-    }
-    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
-      return false;
+    } else {
+      lookup[letter] -= 1;
     }
   }
   return true;
 }
 
-// function same(arr1, arr2) {
-//   if (arr1.length !== arr2.length) {
-//     return false;
-//   }
-//   for (element of arr1) {
-//     let correctIndex = arr2.indexOf(element ** 2);
-//     if (correctIndex === -1) {
-//       return false;
-//     }
-//     arr2.splice(correctIndex, 1);
-//   }
-//   return true;
-// }
-console.log(same([1, 2, 3], [1, 4, 9]));
+console.log(validAnagram("amaw", "awam"));
