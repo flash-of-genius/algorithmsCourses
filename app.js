@@ -1,13 +1,36 @@
-// implement a function called countUniqueValues, which accept a sorted array, and count the unique values in the array.
-function countUniqueValues(arr) {
-  if (arr.length === 0) return 0;
-  let i = 0;
-  for (let j = 1; j < arr.length; j++) {
-    if (arr[i] !== arr[j]) {
-      i++;
-      arr[i] = arr[j];
-    }
+// write a function called maxSubarraySum which accepts an array of integers and a number called n. the function should calculate the maximume sum of n consecutive elements in the array
+
+function maxSubarraySum(arr, num) {
+  let maxSum = 0;
+  let tempSum = 0;
+
+  if (arr.length < num) return null;
+  for (let i = 0; i < num; i++) {
+    maxSum += arr[i];
   }
-  return i + 1;
+  tempSum = maxSum;
+  for (let i = num; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - num] + arr[i];
+    maxSum = Math.max(maxSum, tempSum);
+  }
+  return maxSum;
 }
-console.log(countUniqueValues([1, 1, 1, 2]));
+console.log(maxSubarraySum([1, 2, 2, 2, 5, 8], 2));
+
+// function maxSubarraySum(arr, num) {
+//   if (num > arr.length) {
+//     return null;
+//   }
+
+//   let max = -Infinity;
+//   for (let i = 0; i < arr.length - num + 1; i++) {
+//     let temp = 0;
+//     for (let j = 0; j < num; j++) {
+//       temp += arr[i + j];
+//     }
+//     if (temp > max) {
+//       max = temp;
+//     }
+//   }
+//   return max;
+// }
