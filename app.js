@@ -1,17 +1,6 @@
-function countDown(num) {
-  if (num <= 0) {
-    console.log('All Done!!!');
-    return;
-  }
-  console.log(num);
-  num--;
-  countDown(num);
-}
+function sumRange(num) {
+  if (num === 1) return 1;
 
-// function countDown(num) {
-//   for (let i = num; i > 0; i--) {
-//     console.log(i);
-//   }
-//   console.log('All Done!!');
-// }
-console.log(countDown(5));
+  return num + sumRange(num - 1);
+}
+console.log(sumRange(14));
