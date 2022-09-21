@@ -1,36 +1,12 @@
-// write a function called maxSubarraySum which accepts an array of integers and a number called n. the function should calculate the maximume sum of n consecutive elements in the array
+// Given a sorted arrayn of integers, write a function called search, that accepts a value and returns the index where the value passed to the function is located.
 
-function maxSubarraySum(arr, num) {
-  let maxSum = 0;
-  let tempSum = 0;
+console.log(search([1, 2, 8, 15, 40, 60, 50, 122, 46, 22, 88, 48], 88));
 
-  if (arr.length < num) return null;
-  for (let i = 0; i < num; i++) {
-    maxSum += arr[i];
-  }
-  tempSum = maxSum;
-  for (let i = num; i < arr.length; i++) {
-    tempSum = tempSum - arr[i - num] + arr[i];
-    maxSum = Math.max(maxSum, tempSum);
-  }
-  return maxSum;
-}
-console.log(maxSubarraySum([1, 2, 2, 2, 5, 8], 2));
-
-// function maxSubarraySum(arr, num) {
-//   if (num > arr.length) {
-//     return null;
-//   }
-
-//   let max = -Infinity;
-//   for (let i = 0; i < arr.length - num + 1; i++) {
-//     let temp = 0;
-//     for (let j = 0; j < num; j++) {
-//       temp += arr[i + j];
-//     }
-//     if (temp > max) {
-//       max = temp;
+// function search(arr, val) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === val) {
+//       return i;
 //     }
 //   }
-//   return max;
+//   return -1;
 // }
