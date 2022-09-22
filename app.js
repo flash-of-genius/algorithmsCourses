@@ -1,19 +1,16 @@
 function collectOddValues(arr) {
-  let result = [];
+  let newArr = [];
 
-  function helper(helperInput) {
-    if (helperInput.length === 0) {
-      return;
-    }
-
-    if (helperInput[0] % 2 !== 0) {
-      result.push(helperInput[0]);
-    }
-
-    helper(helperInput.slice(1));
+  if (arr.length === 0) {
+    return newArr;
   }
-  helper(arr);
-  return result;
+
+  if (arr[0] % 2 !== 0) {
+    newArr.push(arr[0]);
+  }
+
+  newArr = newArr.concat(collectOddValues(arr.slice(1)));
+  return newArr;
 }
 
-console.log(collectOddValues([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+console.log(collectOddValues([1, 2, 3, 4, 5]));
