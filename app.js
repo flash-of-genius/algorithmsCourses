@@ -1,16 +1,10 @@
-function collectOddValues(arr) {
-  let newArr = [];
+// linear search
 
-  if (arr.length === 0) {
-    return newArr;
+function search(arr, val) {
+  if (arr.includes(val)) {
+    return arr.indexOf(val);
+  } else {
+    return -1;
   }
-
-  if (arr[0] % 2 !== 0) {
-    newArr.push(arr[0]);
-  }
-
-  newArr = newArr.concat(collectOddValues(arr.slice(1)));
-  return newArr;
 }
-
-console.log(collectOddValues([1, 2, 3, 4, 5]));
+console.log(search([5, 2, 6, 2, 2, 7], 6));
