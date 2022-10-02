@@ -1,19 +1,38 @@
-// Optimized BubbleSort with noSwaps
-function bubbleSort(arr) {
-  var noSwaps;
-  for (var i = arr.length; i > 0; i--) {
-    noSwaps = true;
-    for (var j = 0; j < i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        var temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        noSwaps = false;
+// // legacy version
+
+// function selectionSort(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     let lowest = i;
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < arr[lowest]) {
+//         lowest = j;
+//       }
+//     }
+//     if (i !== lowest) {
+//       // Swap
+//       let temp = arr[i];
+//       arr[i] = arr[lowest];
+//       arr[lowest] = temp;
+//     }
+//   }
+//   return arr;
+// }
+
+// ES2015
+function selectionSort(arr) {
+  const swap = (arr, idx1, idx2) =>
+    ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
+
+  for (let i = 0; i < arr.length; i++) {
+    let lowest = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[lowest] > arr[j]) {
+        lowest = j;
       }
     }
-    if (noSwaps) break;
+    if (i !== lowest) swap(arr, i, lowest);
   }
+
   return arr;
 }
-
-bubbleSort([8, 1, 2, 3, 4, 5, 6, 7]);
+console.log(selectionSort([0, 2, 34, 22, 10, 19, 17]));
