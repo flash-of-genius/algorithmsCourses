@@ -1,38 +1,21 @@
-// // legacy version
-
-// function selectionSort(arr) {
-//   for (let i = 0; i < arr.length; i++) {
-//     let lowest = i;
-//     for (let j = i + 1; j < arr.length; j++) {
-//       if (arr[j] < arr[lowest]) {
-//         lowest = j;
-//       }
-//     }
-//     if (i !== lowest) {
-//       // Swap
-//       let temp = arr[i];
-//       arr[i] = arr[lowest];
-//       arr[lowest] = temp;
-//     }
-//   }
-//   return arr;
-// }
-
-// ES2015
-function selectionSort(arr) {
-  const swap = (arr, idx1, idx2) =>
-    ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
-
-  for (let i = 0; i < arr.length; i++) {
-    let lowest = i;
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[lowest] > arr[j]) {
-        lowest = j;
-      }
-    }
-    if (i !== lowest) swap(arr, i, lowest);
+// Fibonacci sequence
+function Fibonacci(n) {
+  let arr = [0, 1];
+  for (let i = 2; i < n; i++) {
+    arr.push(arr[i - 1] + arr[i - 2]);
   }
-
   return arr;
 }
-console.log(selectionSort([0, 2, 34, 22, 10, 19, 17]));
+console.log('Fibonacci(3)');
+console.log(Fibonacci(3));
+
+function fibonacci(n) {
+  const fib = [0, 1];
+  for (let i = 2; i < n; i++) {
+    fib[i] = fib[i - 1] + fib[i - 2];
+  }
+  return fib;
+}
+
+console.log('fibonacci(3)');
+console.log(fibonacci(3));
