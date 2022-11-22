@@ -1,41 +1,26 @@
-// Factorial of a number
-// with recursion
-function factorialize1(n) {
-  if (n < 0) return -1;
-  else if (n == 0) return 1;
-  else return n * factorialize1(n - 1);
-}
-console.log(factorialize1(5));
+// Prime Number
 
-// with a while loop
-function factorialize2(n) {
-  let result = n;
-  if (n === 0 || n === 1) return 1;
-  while (n > 1) {
-    n--;
-    result *= n;
+function isPrime(n) {
+  if (n < 2) return false;
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
   }
-  return result;
+  return true;
 }
-console.log(factorialize2(10));
+console.log(isPrime(7));
 
-//with a for loop
-function factorialize3(n) {
-  if (n === 0 || n === 1) return 1;
-
-  for (let i = n - 1; i > 1; i--) {
-    n *= i;
+function isPrime1(n) {
+  if (isNaN(n) || !isFinite(n) || n % 1 || n < 2) {
+    return false;
   }
-  return n;
-}
+  let m = Math.sqrt(n);
 
-console.log(factorialize3(15));
-
-function factorial(n) {
-  let result = 1;
-  for (let i = 2; i <= n; i++) {
-    result = result * i;
+  for (let i = 2; i <= m; i++) {
+    if (n % i === 0) return false;
   }
-  return result;
+  return true;
 }
-console.log(factorial(20));
+console.log(isPrime1(7)); //Output: True
+console.log(isPrime1(6)); //Output: False
