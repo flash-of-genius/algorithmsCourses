@@ -1,9 +1,11 @@
-// Recursive factorial of a number
-
-function recursiveFact(n) {
-  if (n < 0) return -1;
-  else if (n === 0) return 1;
-  else return n * recursiveFact(n - 1);
+// Linear search
+function linearSearch(n, t) {
+  let arr = [5, 9, 4, 56, 89, 23, 14, 10];
+  for (let i = 0; i <= n; i++) {
+    if (arr[i] === t) {
+      return i;
+    }
+  }
+  return -1;
 }
-
-console.log(recursiveFact(5));
+console.log(linearSearch(8, 400));
