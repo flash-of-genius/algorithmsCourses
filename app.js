@@ -1,8 +1,9 @@
-// Recursive Fibonacci sequence
+// Recursive factorial of a number
 
-function recursiveFibonacci(n) {
-  if (n <= 1) return 1;
-  return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+function recursiveFact(n) {
+  if (n < 0) return -1;
+  else if (n === 0) return 1;
+  else return n * recursiveFact(n - 1);
 }
 
-console.log(recursiveFibonacci(5));
+console.log(recursiveFact(5));
