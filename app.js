@@ -1,31 +1,8 @@
-// // Power of Two
-function isPowerOfTwo(n) {
-  if (n === 1) return true;
-  if (n % 2 !== 0) return false;
-  return isPowerOfTwo(n / 2);
-}
-console.log(isPowerOfTwo(3));
+// Recursive Fibonacci sequence
 
-function isPowerOfTwo1(n) {
-  if (n < 1) {
-    return false;
-  }
-  while (n > 1) {
-    if (n % 2 !== 0) {
-      return false;
-    }
-    n = n / 2;
-  }
-  return true;
+function recursiveFibonacci(n) {
+  if (n <= 1) return 1;
+  return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
 }
 
-console.log(isPowerOfTwo1(3));
-
-function isPowerOfTwoBitWise(n) {
-  if (n < 1) {
-    return false;
-  }
-  return (n & (n - 1)) === 0;
-}
-
-console.log(isPowerOfTwoBitWise(8));
+console.log(recursiveFibonacci(5));
